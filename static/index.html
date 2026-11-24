@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>맞춤형 커리어 로드맵</title>
+<style>
+:root{--bg:#fff8f1;--bg2:#f1f0ff;--card:#fff;--ink:#27243a;--mute:#6f6b85;--line:#eceaf6;--brand:#6c5ce7;--brand2:#efecff;--pink:#ff6b9d;--warn:#b54708;--warnbg:#fff1dc;--ok:#067647;--okbg:#e3f8ec;--shadow:0 8px 24px rgba(108,92,231,.10);
+--c0:#6c5ce7;--c1:#ff6b9d;--c2:#00b8a9;--c3:#ff9f43;--c4:#2e9bff;--c5:#a55eea}
+@media(prefers-color-scheme:dark){:root{--bg:#14121f;--bg2:#1b1830;--card:#1e1b30;--ink:#f1effa;--mute:#a9a5c4;--line:#322e4d;--brand:#a29bfe;--brand2:#2c2850;--warn:#fdb022;--warnbg:#3a2a10;--ok:#6ce9a6;--okbg:#10301f;--shadow:0 8px 24px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 0 0,var(--bg2),transparent 45%),radial-gradient(circle at 100% 0,#ffe3ee55,transparent 40%),var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;padding:32px 16px 72px}
+.wrap{max-width:880px;margin:0 auto}
+h1{font-size:32px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;background:linear-gradient(90deg,var(--c0),var(--c1));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content;max-width:100%}
+h2{font-size:18px;margin:0 0 14px;font-weight:800}
+.sub{color:var(--mute);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;margin-bottom:18px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:26px}}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+label small{font-weight:400;color:var(--mute)}
+input,select{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 4px var(--brand2)}
+.full{grid-column:1/-1}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+button{cursor:pointer;border:0;border-radius:14px;padding:13px 24px;font:inherit;font-weight:800;background:linear-gradient(135deg,var(--c0),var(--c1));color:#fff;box-shadow:0 6px 16px rgba(108,92,231,.3);transition:transform .15s}
+button:hover{transform:translateY(-2px)}
+button.ghost{background:var(--brand2);color:var(--brand);box-shadow:none}
+.hl{background:linear-gradient(135deg,var(--c0),var(--c5) 50%,var(--c1));color:#fff;border:0;padding:30px 26px}
+.hl h2{font-size:22px;margin-bottom:8px}.hl .meta{opacity:.92;font-weight:600}
+.pill{display:inline-block;background:var(--brand2);color:var(--brand);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:800;margin-right:8px}
+.note{padding:12px 14px;border-radius:12px;background:var(--okbg);color:var(--ok);margin:0 0 8px}
+.warn{padding:12px 14px;border-radius:12px;background:var(--warnbg);color:var(--warn);margin:0 0 8px}
+.tl{display:grid;gap:14px}
+.ph{--c:var(--c0);position:relative;padding:16px 18px 16px 70px;border-radius:18px;background:color-mix(in srgb,var(--c) 8%,var(--card));border:1px solid color-mix(in srgb,var(--c) 25%,var(--line))}
+.ph:nth-child(6n+2){--c:var(--c1)}.ph:nth-child(6n+3){--c:var(--c2)}.ph:nth-child(6n+4){--c:var(--c3)}.ph:nth-child(6n+5){--c:var(--c4)}.ph:nth-child(6n){--c:var(--c5)}
+.ph::before{counter-increment:ph;content:counter(ph);position:absolute;left:16px;top:16px;width:38px;height:38px;border-radius:12px;background:var(--c);color:#fff;font-weight:800;display:grid;place-items:center;font-size:17px}
+.tl{counter-reset:ph}
+.ph .pill{background:var(--c);color:#fff}
+.ph h3{margin:0;font-size:16px}.ph .per{color:var(--mute);font-size:13px;margin-bottom:6px}
+ul{margin:6px 0 0;padding-left:20px}li{margin-bottom:4px}li::marker{color:var(--c1)}
+.two{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.tg{border-top:1px dashed var(--line);padding:12px 0}.tg:first-child{border:0}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.links a{text-decoration:none;font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;background:var(--brand2);color:var(--brand);border:1px solid var(--line)}.links a:hover{background:var(--brand);color:#fff}
+.sem{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}@media(max-width:640px){.sem{grid-template-columns:1fr}}
+.sm{border:1px solid var(--line);border-top:5px solid var(--c0);border-radius:16px;padding:14px 16px}.sm.vac{border-top-color:var(--c3)}
+.smh{display:flex;justify-content:space-between;align-items:center;gap:8px}.sm .per{color:var(--mute);font-size:13px}
+.tip{margin-top:10px;font-size:13px;padding:8px 10px;border-radius:10px;background:var(--warnbg);color:var(--warn)}
+.hint{color:var(--mute);font-size:12px;margin-top:4px}
+@media print{form,.noprint{display:none!important}body{background:#fff}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🚀 맞춤형 커리어 로드맵</h1>
+  <p class="sub">내 상황을 입력하면 취업 희망 시기까지의 단계별 계획을 만들어 드려요. 입력한 내용은 서버에 저장되지 않아요.</p>
+
+  <form id="f" class="card">
+    <div class="grid">
+      <div><label>학교</label><input name="school" placeholder="예: 수원대학교"></div>
+      <div><label>전공</label><input name="major" placeholder="예: 데이터과학부"></div>
+      <div><label>학년</label>
+        <select name="grade"><option>1학년</option><option>2학년</option><option>3학년</option><option selected>4학년</option><option>졸업예정</option><option>졸업생</option></select></div>
+      <div><label>졸업 예정일</label><input type="month" name="graduation"></div>
+      <div><label>학점 <small>(총점과 함께)</small></label>
+        <div class="row"><input name="gpa" type="number" step="0.01" min="0" max="5" placeholder="예: 3.8">
+        <select name="gpa_scale" style="width:110px"><option value="4.5">/ 4.5</option><option value="4.3">/ 4.3</option><option value="4.0">/ 4.0</option></select></div></div>
+      <div><label>거주 지역</label><input name="region" placeholder="예: 경기 화성"></div>
+      <div><label>취업 희망 시기 <small>(입사 목표)</small></label><input type="month" name="hire_when" required></div>
+      <div><label>희망 직무</label><input name="job" list="jobs" placeholder="예: 데이터 분석가" required>
+        <datalist id="jobs"><option>데이터 분석가<option>데이터 엔지니어<option>ML/AI 엔지니어<option>백엔드 개발자<option>프론트엔드 개발자<option>서비스 기획/PM<option>마케터</datalist></div>
+      <div class="full"><label>관심 산업 <small>(쉼표로 구분)</small></label><input name="industries" placeholder="예: 반도체, 핀테크, IT/플랫폼"></div>
+      <div class="full"><label>희망 기업 <small>(쉼표로 구분)</small></label><input name="companies" placeholder="예: 삼성전자, 네이버, 토스"></div>
+      <div class="full"><label>대체 희망 직무 <small>(쉼표로 구분)</small></label><input name="alt_jobs" placeholder="예: 데이터 엔지니어, 서비스 기획/PM"></div>
+    </div>
+    <div class="row" style="margin-top:18px"><button type="submit">✨ 로드맵 만들기</button><button type="button" class="ghost" id="reset">초기화</button></div>
+  </form>
+
+  <div id="out"></div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const list = a => a.length ? '<ul>' + a.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '';
+const split = v => (v || '').split(',').map(s => s.trim()).filter(Boolean);
+
+// 이전 입력 복원 (이 브라우저에만 저장)
+const KEY = 'career-roadmap-form';
+try { const d = JSON.parse(localStorage.getItem(KEY) || '{}'); for (const [k, v] of Object.entries(d)) { const el = $(`[name=${k}]`); if (el) el.value = v; } } catch (e) {}
+
+$('#reset').onclick = () => { $('#f').reset(); $('#out').innerHTML = ''; try { localStorage.removeItem(KEY); } catch (e) {} };
+
+$('#f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(e.target));
+  try { localStorage.setItem(KEY, JSON.stringify(fd)); } catch (e) {}
+  const body = {
+    school: fd.school, major: fd.major, grade: fd.grade, graduation: fd.graduation,
+    gpa: fd.gpa === '' ? null : Number(fd.gpa), gpa_scale: Number(fd.gpa_scale),
+    region: fd.region, hire_when: fd.hire_when, job: fd.job,
+    industries: split(fd.industries), companies: split(fd.companies), alt_jobs: split(fd.alt_jobs),
+  };
+  $('#out').innerHTML = '<div class="card">만드는 중…</div>';
+  try {
+    // 상대 경로: 공개 주소 앞의 /<아이디> 때문에 / 로 시작하면 안 됨
+    const r = await fetch('api/roadmap', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+    if (!r.ok) throw new Error(r.status);
+    render(await r.json());
+    $('#out').scrollIntoView({behavior: 'smooth'});
+  } catch (err) {
+    $('#out').innerHTML = `<div class="card warn">로드맵을 만들지 못했어요 (${esc(err.message)}). 입력값을 확인해 주세요.</div>`;
+  }
+});
+
+function render(d) {
+  const s = d.summary;
+  let h = `<div class="card hl"><h2>${esc(s.headline)}</h2>
+    <div class="meta">${esc(s.start)} → ${esc(s.end)} · 총 ${s.total_months}개월</div></div>`;
+
+  if (d.warnings.length || d.notes.length) {
+    h += `<div class="card"><h2>🩺 진단</h2>` +
+      d.warnings.map(x => `<div class="warn">${esc(x)}</div>`).join('') +
+      d.notes.map(x => `<div class="note">${esc(x)}</div>`).join('') + `</div>`;
+  }
+
+  h += `<div class="card"><h2>🗺️ 단계별 타임라인</h2><div class="tl">` + d.phases.map(p => `
+    <div class="ph"><h3><span class="pill">${esc(p.tag)}</span>${esc(p.title)}</h3>
+    <div class="per">${esc(p.period)} (${p.months}개월)</div>${list(p.tasks)}</div>`).join('') + `</div></div>`;
+
+  if (d.semesters && d.semesters.length) {
+    h += `<div class="card"><h2>🎒 학기별 준비 계획</h2><div class="sem">` + d.semesters.map(x => `
+      <div class="sm ${x.kind === '방학' ? 'vac' : ''}"><div class="smh"><b>${esc(x.label)}</b><span class="pill">${esc(x.stage)}</span></div>
+      <div class="per">${esc(x.period)}</div>${list(x.tasks)}${x.tip ? `<div class="tip">💡 ${esc(x.tip)}</div>` : ''}</div>`).join('') + `</div></div>`;
+  }
+
+  h += `<div class="two">
+    <div class="card"><h2>💪 핵심 역량</h2>${list(d.skills)}</div>
+    <div class="card"><h2>🎓 포트폴리오 · 자격증</h2><b>프로젝트</b>${list(d.projects)}<div style="margin-top:10px"><b>자격증</b></div>${list(d.certs)}</div></div>`;
+
+  if (d.targets.length) {
+    h += `<div class="card"><h2>🏢 관심 산업 · 희망 기업 전략</h2>` + d.targets.map(t =>
+      `<div class="tg"><span class="pill">${esc(t.type)}</span><b>${esc(t.name)}</b><div>${esc(t.advice)}</div><div class="links">${(t.links||[]).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.site)} 공고 보기 ↗</a>`).join('')}</div></div>`).join('') + `</div>`;
+  }
+  if (d.alts.length) {
+    h += `<div class="card"><h2>🔀 대체 직무 플랜</h2>` + d.alts.map(a =>
+      `<div class="tg"><b>${esc(a.name)}</b><div>${esc(a.advice)}</div>
+       ${a.extra.length ? '<div class="hint">추가로 필요한 역량</div>' + list(a.extra) : ''}</div>`).join('') + `</div>`;
+  }
+  h += `<div class="card"><h2>📅 주간 루틴 제안</h2>${list(d.routine)}</div>
+    <div class="noprint"><button class="ghost" onclick="window.print()">인쇄 / PDF 저장</button></div>`;
+  $('#out').innerHTML = h;
+}
+</script>
+</body>
+</html>

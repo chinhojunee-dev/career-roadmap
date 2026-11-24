@@ -1,0 +1,21 @@
+/* 앱 바깥 틀. 색·폰트는 tokens.css 변수만 사용 */
+html, body { margin: 0; height: 100%; background: var(--bg); }
+body { font-family: var(--font-sans); font-size: 14px; color: var(--neutral-900); }  /* 시안 기준 글자 크기 */
+.cr-root { position: relative; width: 100%; height: 100dvh; overflow: hidden; }
+
+/* ── 시안에서 인라인으로 고정돼 있던 그리드: 데스크톱 값은 그대로, 900px/560px 에서만 접힘 ── */
+.cr-dash-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: start; }
+.cr-comp-row { display: grid; grid-template-columns: 140px minmax(0, 1fr) 80px; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.cr-cov { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.cr-src { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 900px) {
+  .cr-dash-grid { grid-template-columns: minmax(0, 1fr); }
+  .cr-comp-row { grid-template-columns: minmax(0, 1fr) 80px; }
+  .cr-comp-row > .cr-bar { grid-column: 1 / -1; grid-row: 2; }
+  .cr-cov { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cr-src { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .cr-cov { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cr-src { grid-template-columns: minmax(0, 1fr); }
+}

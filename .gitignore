@@ -1,0 +1,17 @@
+# 의존성·빌드 결과
+node_modules/
+.next/
+*.tsbuildinfo
+
+# 로그·캐시
+*.log
+__pycache__/
+.ipynb_checkpoints/
+
+# 비밀·로컬 설정
+.env
+.env.*
+
+# 산출물·빈 파일
+career-roadmap-handoff.zip
+untitled.txt
